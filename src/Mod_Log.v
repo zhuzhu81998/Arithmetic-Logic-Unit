@@ -15,5 +15,6 @@ module Mod_Log(input [31:0]A, input [31:0]B, input AluOp0, input AluOp1, output 
     MUX and_xor(.A(AandB), .B(AxorB), .c(AluOp1), .o(secondP));
     
     //final MUX
-    MUX finalOut(.A(firstP), .B(secondP), .c(AluOp0), .o(result));
+    MUX finalOut(.A(secondP), .B(firstP), .c(AluOp0), .o(result));
+    //select secondP (and and xor), if AluOp0 == 0
 endmodule
